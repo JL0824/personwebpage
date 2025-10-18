@@ -6,7 +6,8 @@
     <title>刘子皓的个人空间</title>
     <!-- 链接外部CSS文件 -->
     <link rel="stylesheet" href="style.css">
- 
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- 浮动元素 -->
@@ -55,9 +56,14 @@
                 
                 <div class="audio-section">
                     <h3>🎵来点小曲</h3>
-                    <button class="audio-button" id="audioButton">
-                        <i class="fas fa-play"></i> 点击有惊喜
-                    </button>
+                    <div class="audio-buttons">
+                        <button class="audio-button" id="audioButton1">
+                            <i class="fas fa-play"></i> 点击有惊喜
+                        </button>
+                        <button class="audio-button" id="audioButton2">
+                            <i class="fas fa-play"></i> 慎点
+                        </button>
+                    </div>
                 </div>
             </div>
             
@@ -118,31 +124,64 @@
     </div>
     
     <!-- 音频元素 -->
-    <audio autoplay id="backgroundMusic">
+    <audio id="backgroundMusic1">
         <source src="audio/my-music.mp3" type="audio/mp3">
-        
+        您的浏览器不支持音频元素。
+    </audio>
+    
+    <audio id="backgroundMusic2">
+        <source src="audio/my-music2.mp3" type="audio/mp3">
         您的浏览器不支持音频元素。
     </audio>
     
     <script>
         // 音频控制
-        const audio = document.getElementById('backgroundMusic');
-        const audioButton = document.getElementById('audioButton');
-        let audioPlaying = false;
+        const audio1 = document.getElementById('backgroundMusic1');
+        const audio2 = document.getElementById('backgroundMusic2');
+        const audioButton1 = document.getElementById('audioButton1');
+        const audioButton2 = document.getElementById('audioButton2');
+        let audio1Playing = false;
+        let audio2Playing = false;
         
         // 设置初始音量
-        audio.volume = 0.5;
+        audio1.volume = 0.5;
+        audio2.volume = 0.5;
         
-        // 播放按钮事件
-        audioButton.addEventListener('click', () => {
-            if (!audioPlaying) {
-                audio.play();
-                audioPlaying = true;
-                audioButton.innerHTML = '<i class="fas fa-pause"></i> 带派不老铁';
+        // 播放按钮1事件
+        audioButton1.addEventListener('click', () => {
+            if (!audio1Playing) {
+                // 停止第二个音频
+                audio2.pause();
+                audio2Playing = false;
+                audioButton2.innerHTML = '<i class="fas fa-play"></i> 慎点';
+                
+                // 播放第一个音频
+                audio1.play();
+                audio1Playing = true;
+                audioButton1.innerHTML = '<i class="fas fa-pause"></i> 带派不老铁';
             } else {
-                audio.pause();
-                audioPlaying = false;
-                audioButton.innerHTML = '<i class="fas fa-play"></i> 点击有惊喜';
+                audio1.pause();
+                audio1Playing = false;
+                audioButton1.innerHTML = '<i class="fas fa-play"></i> 点击有惊喜';
+            }
+        });
+        
+        // 播放按钮2事件
+        audioButton2.addEventListener('click', () => {
+            if (!audio2Playing) {
+                // 停止第一个音频
+                audio1.pause();
+                audio1Playing = false;
+                audioButton1.innerHTML = '<i class="fas fa-play"></i> 点击有惊喜';
+                
+                // 播放第二个音频
+                audio2.play();
+                audio2Playing = true;
+                audioButton2.innerHTML = '<i class="fas fa-pause"></i> 都说了别点';
+            } else {
+                audio2.pause();
+                audio2Playing = false;
+                audioButton2.innerHTML = '<i class="fas fa-play"></i> 慎点';
             }
         });
         
