@@ -3,514 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>刘子皓 - 现代化简历</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* 基础样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-        
-        :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s ease;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: var(--dark);
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* 标题样式 */
-        h1, h2, h3 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-        
-        h2 {
-            font-size: 1.8rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-        
-        /* 头部区域 */
-        .header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .header:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-        }
-        
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: white;
-            font-size: 3.5rem;
-            border: 5px solid white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .title {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--gray);
-        }
-        
-        .contact-item i {
-            color: var(--primary);
-        }
-        
-        /* 主要内容区域 */
-        .main-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        /* 卡片样式 */
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-        }
-        
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        /* 时间线样式 */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--primary);
-            opacity: 0.3;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .timeline-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.2rem;
-            top: 0.3rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-        
-        .timeline-date {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .timeline-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-        }
-        
-        .timeline-content {
-            color: var(--dark);
-        }
-        
-        /* 技能标签 */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-        
-        .skill-tag {
-            background: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-            border: 1px solid rgba(67, 97, 238, 0.2);
-        }
-        
-        .skill-tag:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* 荣誉列表 */
-        .awards-list {
-            list-style: none;
-        }
-        
-        .awards-list li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        
-        .awards-list li::before {
-            content: '🏆';
-            position: absolute;
-            left: 0;
-        }
-        
-        .highlight {
-            color: var(--accent);
-            font-weight: 600;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .header {
-                padding: 1.5rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 0.8rem;
-                align-items: flex-start;
-            }
-        }
-        
-        /* 动画效果 */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .card {
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        .card:nth-child(2) { animation-delay: 0.1s; }
-        .card:nth-child(3) { animation-delay: 0.2s; }
-        .card:nth-child(4) { animation-delay: 0.3s; }
-        .card:nth-child(5) { animation-delay: 0.4s; }
-        .card:nth-child(6) { animation-delay: 0.5s; }
-    </style>
+    <title>刘子皓的个人空间</title>
+    <!-- 链接外部CSS文件 -->
+    <link rel="stylesheet" href="style.css">
+ 
 </head>
 <body>
+    <!-- 浮动元素 -->
+    <div class="floating-elements">
+        <div class="floating-element" style="top: 10%; left: 5%; animation-delay: 0s;">🤖</div>
+        <div class="floating-element" style="top: 20%; left: 80%; animation-delay: 2s;">🚀</div>
+        <div class="floating-element" style="top: 60%; left: 10%; animation-delay: 4s;">💡</div>
+        <div class="floating-element" style="top: 40%; left: 90%; animation-delay: 6s;">🎨</div>
+        <div class="floating-element" style="top: 80%; left: 70%; animation-delay: 8s;">⚙️</div>
+        <div class="floating-element" style="top: 30%; left: 60%; animation-delay: 10s;">🔧</div>
+    </div>
+    
     <div class="container">
-        <!-- 头部区域 -->
-        <header class="header">
-            <div class="avatar">
-                <i class="fas fa-user"></i>
+        <header>
+            <!-- 照片位置1：在标题区域添加照片 -->
+            <div class="header-photo">
+                <img src="images/my-photo.jpg" alt="刘子皓的个人照片">
             </div>
-            <h1>刘子皓</h1>
-            <div class="title">智能制造工程 | 华侨大学</div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>13959652113</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>2468730115@qq.com</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>福建漳州</span>
-                </div>
-            </div>
+            <h1 class="bouncing-name">刘子皓</h1>
+            <p class="title">智能制造工程 · 工程师 · 篮球和鸡 </p>
         </header>
         
-        <!-- 主要内容区域 -->
         <div class="main-content">
-            <!-- 教育背景 -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h2>教育背景</h2>
+            <!-- 左侧信息卡片 -->
+            <div class="info-card">
+                <!-- 照片位置2：在基本信息区域添加照片 -->
+                <div class="photo-container">
+                    <img src="images/my-photo.jpg" alt="刘子皓的个人照片">
                 </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022.09 - 至今</div>
-                        <div class="timeline-title">华侨大学（中央统战部直属高校）</div>
-                        <div class="timeline-content">
-                            <p>智能制造工程 | 本科</p>
-                            <p>GPA: <span class="highlight">4.31/5.00</span> (专业排名: 9/132 | 6.8%)</p>
-                            <p>英语水平: IELTS 5.5 (口语5.5)、四级475</p>
-                        </div>
+                
+                <div class="basic-info">
+                    <h3>🤪 基本信息</h3>
+                    <div class="info-item">
+                        <i>👤</i> <span>性别:Man</span>
+                    </div>
+                    <div class="info-item">
+                        <i>🎂</i> <span>年龄:21岁</span>
+                    </div>
+                    <div class="info-item">
+                        <i>📍</i> <span>户籍:福建漳州（美食之乡）</span>
+                    </div>
+                    <div class="info-item">
+                        <i>🚩</i> <span>政治面貌：中共党员（优秀青年）</span>
                     </div>
                 </div>
-            </div>
-            
-            <!-- 技能与软件 -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h2>技能与软件</h2>
-                </div>
-                <div class="skills-container">
-                    <div class="skill-tag">AutoCAD</div>
-                    <div class="skill-tag">Solidworks</div>
-                    <div class="skill-tag">Creo</div>
-                    <div class="skill-tag">Matlab</div>
-                    <div class="skill-tag">Altair Inspire</div>
-                    <div class="skill-tag">AnyLogic</div>
-                    <div class="skill-tag">Amesim</div>
+                
+                <div class="audio-section">
+                    <h3>🎵来点小曲</h3>
+                    <button class="audio-button" id="audioButton">
+                        <i class="fas fa-play"></i> 点击有惊喜
+                    </button>
                 </div>
             </div>
             
-            <!-- 竞赛经历 -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h2>竞赛经历</h2>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024.04</div>
-                        <div class="timeline-title">第十六届福建省大学生机械创新设计大赛</div>
-                        <div class="timeline-content">
-                            <p>福建省一等奖、校一等奖 | 第二作者</p>
-                            <p>团队自主设计并制造了一辆半智能自动化韭菜收割机参赛，主要负责传动部分的齿轮设计、收割结构设计、电机选型设计、转向运动系统设计、物联网远程控制等方面。</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024.10</div>
-                        <div class="timeline-title">中国国际大学生创新大赛（2024）</div>
-                        <div class="timeline-content">
-                            <p>全国铜奖、福建省金奖（小组第一） | 第二作者</p>
-                            <p>项目团队突破分布式高压电液融合一体化构型、泵阀协同控制算法和压差液电复合式回收控制技术等三大核心技术，推出电动重型叉车高效节能电动动力总成方案。</p>
+            <!-- 右侧内容卡片 -->
+            <div class="content-card">
+                
+                <div class="education">
+                    <h2 class="section-title">🎓 教育背景</h2>
+                    <div class="item">
+                        <div class="item-title">华侨大学</div>
+                        <div class="item-subtitle">智能制造工程 · 本科 | 2022.09 - 至今</div>
+                        <div class="item-desc">
+                            <p>GPA: 4.31/5.00 (专业排名前7%)</p>
+                            <p>主修课程：控制工程基础、智能制造技术基础、人工智能技术基础、数字图像处理技术等</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- 荣誉证书 -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-award"></i>
+                
+                <div class="experience">
+                    <h2 class="section-title">🏆 竞赛经历</h2>
+                    <div class="item">
+                        <div class="item-title">第十六届福建省大学生机械创新设计大赛</div>
+                        <div class="item-subtitle">福建省一等奖、校一等奖 | 2024.04</div>
+                        <div class="item-desc">
+                            <p>团队设计并制造半智能自动化韭菜收割机，负责传动部分设计、收割结构设计等。</p>
+                        </div>
                     </div>
-                    <h2>荣誉证书</h2>
-                </div>
-                <div class="timeline-content">
-                    <h3 style="margin-top: 1rem; color: var(--secondary);">科创 & 竞赛类</h3>
-                    <ul class="awards-list">
-                        <li>参与起草两项工程机械能量回收系统节能性能测试方法<strong>团体标准</strong>（唯一本科生）</li>
-                        <li>授权国家<strong>发明专利2项</strong>（第一发明人）</li>
-                        <li>发表一篇会议论文（第25届流体动力与机电控制工程国际学术会议）（第六作者）</li>
-                        <li>第十六届福建省大学生机械创新设计大赛一等奖（第二作者）</li>
-                        <li>中国国际大学生创新大赛(2024)国家铜奖（第二作者）</li>
-                        <li>华侨大学2023年大学生工程实践与创新能力大赛校三等奖（第一作者）</li>
-                        <li>中国国际大学生创新大赛(2023)国家银奖（第十二作者）</li>
-                        <li>第三十一届"挑战杯"华侨大学学生课外学术科技作品竞赛一等奖（第八作者）</li>
-                    </ul>
                     
-                    <h3 style="margin-top: 1.5rem; color: var(--secondary);">学业 & 综合类</h3>
-                    <ul class="awards-list">
-                        <li>2022-2023学年、2023-2024学年<strong>国家励志奖学金</strong></li>
-                        <li>2023-2024学年<strong>华侨大学优秀学生干部</strong></li>
-                        <li>2023-2024学年<strong>福建省贤銮奖学金</strong></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- 学生工作 -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h2>学生工作</h2>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022.10 - 2025.06</div>
-                        <div class="timeline-title">华侨大学机电及自动化学院科技创新部</div>
-                        <div class="timeline-content">
-                            <p>志愿者 → 成员 → 负责人</p>
-                            <p>负责华侨大学2024年工程实践与创新能力大赛的统筹规划、比赛辅导、赛事规则编写、场地布置、赛事宣传、材料报销等全权工作。</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">现任</div>
-                        <div class="timeline-title">院本科生第五党支部组织委员、校团委科技创新部兼职辅导员</div>
-                        <div class="timeline-content">
-                            <p>累计志愿工时达165小时，参与学院迎新、新生军训志愿服务、邮局引导志愿服务、运动会后勤保障志愿服务等志愿活动。</p>
+                    <div class="item">
+                        <div class="item-title">中国国际大学生创新大赛(2024)</div>
+                        <div class="item-subtitle">全国铜奖、福建省金奖 | 2024.10</div>
+                        <div class="item-desc">
+                            <p>项目团队研发电动重型叉车高效节能电动动力总成方案。</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- 主修课程 -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-book"></i>
+                
+                <div class="honors">
+                    <h2 class="section-title">⭐ 荣誉证书</h2>
+                    <div class="item">
+                        <div class="item-title">主要荣誉</div>
+                        <div class="item-desc">
+                            <span class="tag">国家励志奖学金</span>
+                            <span class="tag">优秀学生干部</span>
+                            <span class="tag">贤銮奖学金</span>
+                            <span class="tag">发明专利</span>
+                            <span class="tag">篮球和鸡</span>
+                        </div>
                     </div>
-                    <h2>主修课程</h2>
-                </div>
-                <div class="skills-container">
-                    <div class="skill-tag">控制工程基础 (94)</div>
-                    <div class="skill-tag">控制系统CAD (90)</div>
-                    <div class="skill-tag">智能制造技术基础 (90)</div>
-                    <div class="skill-tag">人工智能技术基础 (94)</div>
-                    <div class="skill-tag">专业英语与文献阅读 (90)</div>
-                    <div class="skill-tag">计算机智能控制系统 (86)</div>
-                    <div class="skill-tag">数字图像处理技术 (90)</div>
-                    <div class="skill-tag">制造系统建模与仿真 (90)</div>
-                    <div class="skill-tag">智能生产系统运作管理 (90)</div>
-                    <div class="skill-tag">智能传感与检测技术 (87)</div>
-                    <div class="skill-tag">有限元与数值计算方法 (86)</div>
-                    <div class="skill-tag">流体力学与传热学基础 (92)</div>
-                    <div class="skill-tag">工程力学 (92)</div>
-                    <div class="skill-tag">工程图学 (92)</div>
-                    <div class="skill-tag">机械原理与设计基础 (87)</div>
-                    <div class="skill-tag">电子实训 (95)</div>
                 </div>
             </div>
         </div>
+        
+        <footer>
+            <p>© 2025 刘子皓的个人空间 | 生活不止眼前的苟且，还有诗和远方...和BUG！</p>
+            <p>联系方式：you know | 微信：扫码可见（如果我能画出来的话）</p>
+        </footer>
     </div>
-
+    
+    <!-- 音频元素 -->
+    <audio autoplay id="backgroundMusic">
+        <source src="audio/my-music.mp3" type="audio/mp3">
+        
+        您的浏览器不支持音频元素。
+    </audio>
+    
     <script>
-        // 简单的交互效果
-        document.addEventListener('DOMContentLoaded', function() {
-            // 为所有卡片添加点击效果
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.98)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
-            
-            // 打印友好的提示
-            console.log('现代化简历页面已加载完成');
+        // 音频控制
+        const audio = document.getElementById('backgroundMusic');
+        const audioButton = document.getElementById('audioButton');
+        let audioPlaying = false;
+        
+        // 设置初始音量
+        audio.volume = 0.5;
+        
+        // 播放按钮事件
+        audioButton.addEventListener('click', () => {
+            if (!audioPlaying) {
+                audio.play();
+                audioPlaying = true;
+                audioButton.innerHTML = '<i class="fas fa-pause"></i> 带派不老铁';
+            } else {
+                audio.pause();
+                audioPlaying = false;
+                audioButton.innerHTML = '<i class="fas fa-play"></i> 点击有惊喜';
+            }
         });
+        
+        // 添加一些有趣的交互效果
+        document.querySelectorAll('.item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                }, 300);
+            });
+        });
+        
+        // 添加随机颜色变化效果
+        const colors = ['#ff3366', '#ffcc00', '#66ccff', '#33cc99', '#9966ff'];
+        setInterval(() => {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.querySelector('.bouncing-name').style.color = randomColor;
+        }, 2000);
     </script>
 </body>
 </html>
